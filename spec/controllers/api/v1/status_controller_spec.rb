@@ -18,7 +18,7 @@ RSpec.describe Api::V1::StatusController, type: :controller do
 
       it 'returns invalid current status message' do
         post!
-        expect(response.parsed_body).to include('Current status is not valid')
+        expect(response.parsed_body).to include('Current status is not valid. It can only be either UP or DOWN')
       end
     end
 

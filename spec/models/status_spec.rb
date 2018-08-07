@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Status, type: :model do
   describe '#current_status' do
     it {
-      should allow_values('up', 'down', 'UP', 'down'). for(:current_status)
+      should allow_values('UP', 'DOWN', 'up', 'down'). for(:current_status)
     }
 
     it {
