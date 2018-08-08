@@ -1,2 +1,27 @@
-<h1>Litmus Status Page</h1>
-<p>Find me in app/views/static_pages/index.html.erb</p>
+<div class="container">
+  <h1>Litmus Status Page</h1>
+
+  <div class="alert <%= status_class(@current_status) %>">
+    <p>Litmus is currently <%= @current_status.current_status %>.</p>
+    <p>Last updated: <%= @current_status.created_at.strftime("%I:%M%p on %m/%d/%Y") %>.</p>
+  </div>
+
+  <div>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Message</th>
+          <th scope="col">Timestamp</th>
+        </tr>
+      </thead>
+      <tbody class="table-striped">
+        <% @status_messages.each do |status_message| %>
+          <tr>
+            <td><%= status_message[:description].html_safe %></td>
+            <td><%= status_message[:created_at] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
