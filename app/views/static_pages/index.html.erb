@@ -3,7 +3,7 @@
 
   <div class="alert <%= status_class(@current_status) %>">
     <p>Litmus is currently <%= @current_status.current_status %>.</p>
-    <p>Last updated: <%= @current_status.created_at.strftime("%I:%M%p on %m/%d/%Y") %>.</p>
+    <p>Last updated: <%= @current_status.created_at.strftime("%I:%M%p%z on %m/%d/%Y") %>.</p>
   </div>
 
   <div>
@@ -18,7 +18,7 @@
         <% @status_messages.each do |status_message| %>
           <tr>
             <td><%= status_message[:description].html_safe %></td>
-            <td><%= status_message[:created_at] %></td>
+            <td><%= status_message[:created_at].strftime("%I:%M%p%z on %m/%d/%Y") %></td>
           </tr>
         <% end %>
         <%== pagy_nav(@pagy) %>
