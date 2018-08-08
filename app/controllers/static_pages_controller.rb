@@ -1,7 +1,9 @@
 class StaticPagesController < ApplicationController
+  include Pagy::Backend
+
   def index
     @current_status = current_status
-    @status_messages = status_messages
+    @pagy, @status_messages = status_messages
   end
 
   private
@@ -11,6 +13,6 @@ class StaticPagesController < ApplicationController
   end
 
   def status_messages
-    @_status_messages ||= StatusMessage.order(created_at: :desc)
+    @_status_messages ||= pagy(StatusMessage.order(created_at: :desc), items: 10)
   end
 end
