@@ -1,6 +1,8 @@
 module Api
   module V1
     class StatusMessagesController < ApplicationController
+      before_action :authenticate_user!, only: :create
+
       def create
         @status_message = StatusMessage.new(permitted_params)
 

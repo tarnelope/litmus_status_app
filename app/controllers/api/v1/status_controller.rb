@@ -1,6 +1,8 @@
 module Api
   module V1
     class StatusController < ApplicationController
+      before_action :authenticate_user!, only: :create
+
       def create
         @status = Status.new(permitted_params)
 
