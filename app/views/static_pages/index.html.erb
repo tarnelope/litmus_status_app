@@ -17,7 +17,7 @@
       <tbody class="table-striped">
         <% @status_messages.each do |status_message| %>
           <tr>
-            <td><%= status_message[:description].html_safe %></td>
+            <td><%=h status_message[:description] %></td>
             <td><%= status_message[:created_at].strftime("%I:%M%p%z on %m/%d/%Y") %></td>
           </tr>
         <% end %>
