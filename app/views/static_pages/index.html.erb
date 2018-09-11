@@ -2,8 +2,12 @@
   <h1>Litmus Status Page</h1>
 
   <div class="alert <%= status_class(@current_status) %>">
-    <p>Litmus is currently <%= @current_status.current_status %>.</p>
-    <p>Last updated: <%= @current_status.created_at.strftime("%I:%M%p%z on %m/%d/%Y") %>.</p>
+    <% if @current_status %>
+      <p>Litmus is currently <%= @current_status.current_status %>.</p>
+      <p>Last updated: <%= @current_status.created_at.strftime("%I:%M%p%z on %m/%d/%Y") %>.</p>
+    <% else %>
+      <p>Sorry! No status currently set</p>
+    <% end %>
   </div>
 
   <div>
